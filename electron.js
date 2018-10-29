@@ -25,7 +25,7 @@ function createWindow() {
   });
 }
 
-ipcMain.on("log", (_, statement) => console.count(statement));
+ipcMain.on("log", (_, ...args) => console.log(args));
 ipcMain.on("load", (_, element) => {
   element.click();
   // const logInTab = document.getElementById("ui-id-1");

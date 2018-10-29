@@ -5,5 +5,6 @@ module.exports = {
     path: path.resolve(__dirname, "build"),
     filename: "bot.js"
   },
-  target: "electron-renderer"
+  target: "electron-renderer",
+  mode: "development"
 };
