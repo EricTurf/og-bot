@@ -8,6 +8,7 @@
 
 # production
 /build
+/bot-build
 
 # misc
 .DS_Store

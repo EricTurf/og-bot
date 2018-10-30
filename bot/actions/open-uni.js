@@ -1,19 +1,19 @@
-import shouldOpen from "../helpers/should-open";
-import hasLoaded from "../helpers/has-loaded";
-import getRandomInterval from "../helpers/get-random-interval";
+import shouldOpen from '../helpers/should-open';
+import hasLoaded from '../helpers/has-loaded';
+import getRandomInterval from '../helpers/get-random-interval';
 
 const pressPlay = element => {
-  const playButton = [...element.getElementsByTagName("button")].find(
-    el => el.innerText === "Play"
+  const playButton = [...element.getElementsByTagName('button')].find(
+    el => el.innerText === 'Play'
   );
   playButton && playButton.click();
 };
 
-const universe = "Dorado";
+const universe = 'Cosmos';
 
 const openUni = () => {
   if (hasLoaded()) {
-    const uniTab = [...document.getElementsByTagName("div")].find(
+    const uniTab = [...document.getElementsByTagName('div')].find(
       el => el.innerText === universe
     );
 
