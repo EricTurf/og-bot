@@ -5,7 +5,7 @@ const SettingsService = {
     return settings;
   },
   set(newSettings) {
-    settings = { ...settings, newSettings };
+    settings = { ...settings, ...newSettings };
   },
 };
 

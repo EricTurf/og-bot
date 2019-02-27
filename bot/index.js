@@ -22,9 +22,5 @@ function loop() {
   if (url.includes('https://lobby.ogame.gameforge.com/'))
     _events.emit('open-uni');
 
-  if (url.includes('?page=overview'))
-    ipcRenderer.send(
-      'res',
-      document.getElementById('resources_metal').innerHTML
-    );
+  if (url.includes('?page=overview')) _events.emit('overview');
 }

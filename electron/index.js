@@ -1,6 +1,9 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require('electron');
+import { app, BrowserWindow, ipcMain } from 'electron';
 
+import { getStateService } from './services/state';
+
+const StateService = getStateService();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -43,20 +46,14 @@ function createWindow() {
 }
 
 ipcMain.on('log', (_, ...args) => args.forEach(arg => console.log(arg)));
-let m;
-let c;
-let d;
 
-ipcMain.on('res', (e, { met, cry, deut }) => {
-  m = met;
-  c = cry;
-  d = deut;
+ipcMain.on('planet-info', (_, info) => {
+  StateService.set({ planet: JSON.parse(info) });
 });
 
-ipcMain.on('give-res', event => {
-  console.log('heresdfsdfsdf');
-  event.sender.send('bla', m);
-});
+ipcMain.on('get-state', event =>
+  event.sender.send('state', StateService.get())
+);
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -91,6 +88,3 @@ app.on('web-contents-created', function(webContentsCreatedEvent, contents) {
     });
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
